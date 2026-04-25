@@ -1,0 +1,22 @@
+    <!-- Doctor Profile Completion Modal -->
+    <div class="modal fade" id="doctorProfileModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold">Complete Your Profile</h5>
+                </div>
+                <div class="modal-body p-4">
+                    <p class="text-muted mb-4">Please provide your area of specialization to continue. This will be visible to patients when booking appointments.</p>
+                    <form id="doctorProfileForm">
+                        <div class="mb-3">
+                            <label class="form-label text-muted small">Specialization <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="doctorSpecialization" placeholder="e.g. Cardiologist, Dermatologist" required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary rounded-pill">Save & Continue</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

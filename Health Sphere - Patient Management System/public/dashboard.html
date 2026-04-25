@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Health Sphere</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-heart-pulse-fill me-2"></i>Health Sphere <span class="badge bg-primary ms-2">Doctor's Portal</span></a>
+            <div class="d-flex">
+                <a href="index.html" class="btn btn-outline-light btn-sm">Sign Out</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <div class="row align-items-center mb-4">
+            <div class="col-md-6">
+                <h2 class="fw-bold text-dark">Upcoming Appointments</h2>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex gap-2 justify-content-md-end">
+                    <div class="input-group" style="max-width: 300px;">
+                        <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
+                        <input type="text" id="searchInput" class="form-control border-start-0 ps-0" placeholder="Search patients...">
+                    </div>
+                    <button class="btn btn-primary" onclick="loadAppointments()"><i class="bi bi-arrow-clockwise me-2"></i>Refresh</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0 align-middle">
+                        <thead class="bg-light text-muted">
+                            <tr>
+                                <th class="p-4 border-0">Patient Name</th>
+                                <th class="p-4 border-0">Patient Email</th>
+                                <th class="p-4 border-0">Patient Phone</th>
+                                <th class="p-4 border-0">Doctor</th>
+                                <th class="p-4 border-0">Date & Time</th>
+                                <th class="p-4 border-0">Reason</th>
+                                <th class="p-4 border-0 text-end">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="appointmentsTableBody">
+                            <!-- JS will populate this -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Doctor Profile Completion Modal -->
+    <div class="modal fade" id="doctorProfileModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold">Complete Your Profile</h5>
+                </div>
+                <div class="modal-body p-4">
+                    <p class="text-muted mb-4">Please provide your area of specialization to continue. This will be visible to patients when booking appointments.</p>
+                    <form id="doctorProfileForm">
+                        <div class="mb-3">
+                            <label class="form-label text-muted small">Specialization <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="doctorSpecialization" placeholder="e.g. Cardiologist, Dermatologist" required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary rounded-pill">Save & Continue</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Firebase SDKs (Compat) -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+    <script src="js/main.js?v=2"></script>
+    <script>
+        // Load bookings on page load
+        document.addEventListener('DOMContentLoaded', () => {
+             loadAppointments();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+/* Health Sphere Custom CSS */
+
+:root {
+  --primary-color: #0d6efd;
+  --secondary-color: #6c757d;
+  --accent-color: #0dcaf0;
+  --light-bg: #f8f9fa;
+  --dark-text: #212529;
+  --font-main: "Outfit", sans-serif;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--dark-text);
+  overflow-x: hidden; /* Prevent horizontal scroll on mobile */
+}
+
+/* Navbar */
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* Hero Section */
+.hero-section {
+  min-height: 85vh;
+  padding: 100px 0;
+  background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-img {
+  transition: transform 0.3s ease;
+}
+
+.hero-img:hover {
+  transform: translateY(-10px);
+}
+
+/* Services */
+.service-card {
+  transition: all 0.3s ease;
+  border-radius: 1rem;
+  background: white;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.075) !important;
+}
+
+/* Form Styles */
+.form-control,
+.form-select {
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #dee2e6;
+}
+
+.form-control:focus,
+.form-select:focus {
+  box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.1);
+  border-color: var(--primary-color);
+}
+
+/* Buttons */
+.btn-primary {
+  padding: 0.8rem 1.5rem;
+  font-weight: 600;
+}
+
+/* Table */
+.table th {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive Enhancements */
+@media (max-width: 991.98px) {
+  /* Navbar Mobile */
+  .navbar-collapse {
+    background: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+    margin-top: 1rem;
+  }
+  
+  .navbar-nav .nav-item {
+    padding: 0.5rem 0;
+    text-align: center;
+  }
+
+  /* Center auth buttons on mobile */
+  #authButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1rem 0 !important;
+  }
+
+  /* Reset margin for auth buttons container */
+  .ms-lg-3 {
+    margin-left: 0 !important;
+  }
+  
+  /* Make buttons full width on very small screens if needed, or keep fixed */
+  #authButtons button {
+    width: 100% !important; /* Stack comfortably */
+    max-width: 200px;
+    margin-right: 0 !important;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Hero Section Mobile */
+  .hero-section {
+    padding: 60px 0;
+    text-align: center;
+  }
+
+  .display-3 {
+    font-size: 2.5rem; /* Smaller heading on mobile */
+  }
+
+  .hero-img {
+    margin-top: 3rem;
+    max-width: 80%; /* Don't take full width to look nicer */
+  }
+
+  /* Hero Auth Buttons Stack */
+  #hero-auth-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  #hero-auth-buttons .btn {
+    width: 100%;
+    max-width: 280px;
+    margin-right: 0 !important;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 576px) {
+  .display-3 {
+    font-size: 2rem;
+  }
+  
+  .lead {
+    font-size: 1rem;
+  }
+}

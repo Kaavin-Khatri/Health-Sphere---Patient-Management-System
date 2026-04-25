@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Health Sphere</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css?v=2" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light fixed-top bg-white shadow-sm"
+    >
+      <div class="container">
+        <a class="navbar-brand fw-bold text-primary" href="index.html"
+          ><i class="bi bi-heart-pulse-fill me-2"></i>Health Sphere</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#services">Services</a>
+            </li>
+            <!-- Auth Buttons (Hidden if logged in handled by main.js) -->
+            <li class="nav-item ms-lg-3" id="authButtons">
+              <a href="index.html" class="btn btn-primary rounded-pill px-4">Login / Sign Up</a>
+            </li>
+            <li class="nav-item ms-lg-3 d-none" id="userProfile">
+                 <a href="index.html" class="btn btn-outline-primary rounded-pill px-4">Go to Dashboard</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="bg-primary text-white py-5 mt-5">
+        <div class="container py-5 text-center">
+            <h1 class="display-4 fw-bold">About Health Sphere</h1>
+            <p class="lead mb-0">Revolutionizing healthcare with patient-centric solutions.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-5">
+        <div class="container py-4">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6">
+                    <img src="https://img.freepik.com/free-photo/team-young-specialist-doctors-standing-corridor-hospital_1303-21199.jpg" class="img-fluid rounded-4 shadow" alt="Our Team">
+                </div>
+                <div class="col-lg-6 mt-4 mt-lg-0">
+                    <h2 class="fw-bold mb-3">Our Mission</h2>
+                    <p class="text-muted lead">To provide accessible, affordable, and high-quality healthcare services to everyone, everywhere.</p>
+                    <p class="text-muted">At Health Sphere, we believe that managing your health should be simple and stress-free. We connect patients with top-tier medical professionals through a seamless digital experience, ensuring that quality care is just a click away.</p>
+                </div>
+            </div>
+
+            <div class="row g-4 mt-4">
+                <div class="col-md-4">
+                    <div class="p-4 border rounded-4 h-100 bg-light">
+                        <i class="bi bi-people-fill text-primary display-5 mb-3"></i>
+                        <h4 class="fw-bold">Patient First</h4>
+                        <p class="text-muted">We prioritize your comfort and well-being above all else, offering personalized care tailored to your needs.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 border rounded-4 h-100 bg-light">
+                        <i class="bi bi-shield-check-fill text-primary display-5 mb-3"></i>
+                        <h4 class="fw-bold">Trusted Doctors</h4>
+                        <p class="text-muted">Our network consists of verified, highly qualified specialists committed to providing the best medical advice.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 border rounded-4 h-100 bg-light">
+                        <i class="bi bi-laptop-fill text-primary display-5 mb-3"></i>
+                        <h4 class="fw-bold">Digital Ease</h4>
+                        <p class="text-muted">From booking appointments to viewing medical history, our platform makes healthcare management effortless.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h2 class="fw-bold text-primary display-4">10k+</h2>
+                    <p class="text-muted">Happy Patients</p>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h2 class="fw-bold text-primary display-4">500+</h2>
+                    <p class="text-muted">Expert Doctors</p>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h2 class="fw-bold text-primary display-4">24/7</h2>
+                    <p class="text-muted">Support Available</p>
+                </div>
+                <div class="col-md-3">
+                    <h2 class="fw-bold text-primary display-4">4.8</h2>
+                    <p class="text-muted">Average Rating</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-5 pb-4 mt-auto">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="fw-bold text-primary mb-3"><i class="bi bi-heart-pulse-fill me-2"></i>Health Sphere</h5>
+                    <p class="text-secondary small">Your trusted partner in digital healthcare. We are dedicated to making medical services accessible and efficient for everyone.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="fw-bold mb-3">Quick Links</h5>
+                    <ul class="list-unstyled small text-secondary">
+                        <li class="mb-2"><a href="index.html" class="text-decoration-none text-secondary">Home</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-decoration-none text-light">About Us</a></li>
+                        <li class="mb-2"><a href="index.html#services" class="text-decoration-none text-secondary">Services</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-secondary">Contact</a></li>
+                    </ul>
+                </div>
+                 <div class="col-lg-3 col-md-6">
+                    <h5 class="fw-bold mb-3">Contact Us</h5>
+                    <ul class="list-unstyled small text-secondary">
+                        <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> 123 Health Street, Med City, NY 10012</li>
+                        <li class="mb-2"><i class="bi bi-envelope me-2"></i> support@healthsphere.com</li>
+                        <li class="mb-2"><i class="bi bi-telephone me-2"></i> +1 (555) 123-4567</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="fw-bold mb-3">Newsletter</h5>
+                    <p class="small text-secondary">Subscribe to get health tips and updates.</p>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control form-control-sm" placeholder="Your Email" aria-label="Your Email">
+                        <button class="btn btn-primary btn-sm" type="button">Join</button>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-secondary my-4">
+            <div class="text-center small text-secondary">
+                <p class="mb-0">&copy; 2024 Health Sphere. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js?v=2"></script>
+  </body>
+</html>

@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Health Sphere - Modern Healthcare</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css?v=2" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light fixed-top bg-white shadow-sm"
+    >
+      <div class="container">
+        <a class="navbar-brand fw-bold text-primary" href="#"
+          ><i class="bi bi-heart-pulse-fill me-2"></i>Health Sphere</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#services">Services</a>
+            </li>
+            <li class="nav-item d-none" id="doctorLink">
+              <a class="nav-link" href="dashboard.html">Doctor Dashboard</a>
+            </li>
+            <li class="nav-item d-none" id="adminLink">
+              <a class="nav-link" href="admin.html">Admin Panel</a>
+            </li>
+            <li class="nav-item ms-lg-3" id="authButtons">
+              <button
+                class="btn btn-outline-primary rounded-pill me-2"
+                style="
+                  width: 130px;
+                  padding-left: 0;
+                  padding-right: 0;
+                  display: inline-block;
+                  text-align: center;
+                "
+                data-bs-toggle="modal"
+                data-bs-target="#loginModal"
+              >
+                Login
+              </button>
+              <button
+                class="btn btn-primary rounded-pill"
+                style="
+                  width: 130px;
+                  padding-left: 0;
+                  padding-right: 0;
+                  display: inline-block;
+                  text-align: center;
+                "
+                data-bs-toggle="modal"
+                data-bs-target="#signupModal"
+              >
+                Sign Up
+              </button>
+            </li>
+            <li class="nav-item ms-lg-3 d-none" id="userProfile">
+              <div class="dropdown">
+                <a
+                  href="#"
+                  class="d-flex align-items-center text-decoration-none dropdown-toggle text-dark"
+                  id="profileDropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <span class="fw-bold" id="userNameDisplay"></span>
+                </a>
+                <ul
+                  class="dropdown-menu dropdown-menu-end shadow border-0"
+                  aria-labelledby="profileDropdown"
+                >
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="#"
+                      data-bs-toggle="modal"
+                      data-bs-target="#settingsModal"
+                      ><i class="bi bi-gear me-2"></i>Settings</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a
+                      class="dropdown-item text-danger"
+                      href="#"
+                      onclick="logout()"
+                      ><i class="bi bi-box-arrow-right me-2"></i>Logout</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ... existing sections ... -->
+
+    <!-- Settings Modal -->
+    <div class="modal fade" id="settingsModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg">
+          <div class="modal-header border-0 pb-0">
+            <h5 class="modal-title fw-bold">Settings</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body p-4">
+            <form id="settingsForm">
+              <!-- Profile Image Section Removed -->
+
+              <div class="mb-3">
+                <label class="form-label text-muted small">Full Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="settingsName"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label text-muted small">Email Address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="settingsEmail"
+                  readonly
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label text-muted small">Phone Number</label>
+                <input type="tel" class="form-control" id="settingsPhone" />
+              </div>
+
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary rounded-pill">
+                  Save Changes
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section d-flex align-items-center">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h1 class="display-3 fw-bold mb-4 text-dark">
+              Your Health, <br /><span class="text-primary">Our Priority</span>
+            </h1>
+            <p class="lead text-muted mb-5">
+              Experience seamless healthcare management. Book appointments with
+              top specialists in seconds.
+            </p>
+
+            <div id="hero-auth-buttons">
+              <button
+                class="btn btn-lg btn-primary rounded-pill px-5 shadow-lg me-2"
+                data-bs-toggle="modal"
+                data-bs-target="#signupModal"
+              >
+                Get Started
+              </button>
+              <button
+                class="btn btn-lg btn-outline-primary rounded-pill px-5 shadow-lg"
+                data-bs-toggle="modal"
+                data-bs-target="#loginModal"
+              >
+                Login
+              </button>
+            </div>
+
+            <div id="patient-dashboard" class="d-none dashboard-view">
+              <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-4">
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <h4 class="fw-bold mb-0">My Appointments</h4>
+                    <button
+                      class="btn btn-sm btn-primary rounded-pill"
+                      data-bs-toggle="modal"
+                      data-bs-target="#bookingModal"
+                    >
+                      + New Booking
+                    </button>
+                  </div>
+
+                  <ul class="nav nav-tabs mb-3" id="patientTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button
+                        class="nav-link active"
+                        id="p-upcoming-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#p-upcoming"
+                        type="button"
+                        role="tab"
+                      >
+                        Upcoming
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button
+                        class="nav-link"
+                        id="p-history-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#p-history"
+                        type="button"
+                        role="tab"
+                      >
+                        History
+                      </button>
+                    </li>
+                  </ul>
+
+                  <div class="tab-content" id="patientTabsContent">
+                    <div
+                      class="tab-pane fade show active"
+                      id="p-upcoming"
+                      role="tabpanel"
+                    >
+                      <div
+                        id="myAppointmentsList"
+                        class="list-group list-group-flush"
+                      >
+                        <!-- Populated by JS -->
+                        <p class="text-muted text-center py-3">
+                          No upcoming appointments.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="p-history" role="tabpanel">
+                      <div
+                        id="patientHistoryList"
+                        class="list-group list-group-flush"
+                      >
+                        <!-- Populated by JS -->
+                        <p class="text-muted text-center py-3">
+                          No past appointments.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="doctor-dashboard" class="d-none dashboard-view">
+              <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-4">
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <h4 class="fw-bold mb-0">My Schedule</h4>
+                    <span class="badge bg-primary rounded-pill"
+                      >Doctor View</span
+                    >
+                  </div>
+
+                  <ul class="nav nav-tabs mb-3" id="doctorTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button
+                        class="nav-link active"
+                        id="d-upcoming-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#d-upcoming"
+                        type="button"
+                        role="tab"
+                      >
+                        Upcoming
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button
+                        class="nav-link"
+                        id="d-history-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#d-history"
+                        type="button"
+                        role="tab"
+                      >
+                        History
+                      </button>
+                    </li>
+                  </ul>
+
+                  <div class="tab-content" id="doctorTabsContent">
+                    <div
+                      class="tab-pane fade show active"
+                      id="d-upcoming"
+                      role="tabpanel"
+                    >
+                      <div
+                        id="doctorScheduleList"
+                        class="list-group list-group-flush"
+                      >
+                        <!-- Populated by JS -->
+                        <p class="text-muted text-center py-3">
+                          No appointments scheduled.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="d-history" role="tabpanel">
+                      <div
+                        id="doctorHistoryList"
+                        class="list-group list-group-flush"
+                      >
+                        <!-- Populated by JS -->
+                        <p class="text-muted text-center py-3">
+                          No past appointments.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="admin-dashboard" class="d-none dashboard-view">
+              <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-4 text-center">
+                  <i
+                    class="bi bi-shield-lock-fill display-1 text-danger mb-3"
+                  ></i>
+                  <h4 class="fw-bold mb-2">Admin Control Center</h4>
+                  <p class="text-muted mb-4">
+                    Manage users, doctors, and system settings.
+                  </p>
+                  <a
+                    href="admin.html"
+                    class="btn btn-danger btn-lg rounded-pill px-5 shadow-sm"
+                    >Go to Admin Panel</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 text-center d-none d-lg-block">
+            <!-- Placeholder for illustration, using a reliable placeholder service or leaving empty for CSS background -->
+            <img
+              src="https://img.freepik.com/free-vector/doctor-character-background_1270-84.jpg"
+              alt="Healthcare"
+              class="img-fluid rounded-4 shadow-lg hero-img"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5 bg-light">
+      <div class="container py-5">
+        <div class="text-center mb-5">
+          <h2 class="fw-bold">Our Services</h2>
+          <p class="text-muted">Comprehensive care for you and your family</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm service-card p-4">
+              <div class="card-body text-center">
+                <i class="bi bi-calendar-check text-primary display-4 mb-3"></i>
+                <h5 class="card-title fw-bold">Easy Booking</h5>
+                <p class="card-text text-muted">
+                  Schedule appointments online instantly without waiting on
+                  hold.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm service-card p-4">
+              <div class="card-body text-center">
+                <i class="bi bi-person-badge text-primary display-4 mb-3"></i>
+                <h5 class="card-title fw-bold">Expert Doctors</h5>
+                <p class="card-text text-muted">
+                  Access a network of top-rated specialists across various
+                  fields.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm service-card p-4">
+              <div class="card-body text-center">
+                <i class="bi bi-file-medical text-primary display-4 mb-3"></i>
+                <h5 class="card-title fw-bold">Digital Records</h5>
+                <p class="card-text text-muted">
+                  Keep track of your medical history and appointments securely.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Modal -->
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg">
+          <div class="modal-header border-0 pb-0">
+            <h5 class="modal-title fw-bold">Book Appointment</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body p-4">
+            <form id="bookingForm">
+              <div class="mb-3">
+                <label class="form-label text-muted small">Full Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="patientName"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label text-muted small">Doctor</label>
+                <select class="form-select" id="doctorName" required>
+                  <option value="" selected disabled>
+                    Select a Specialist
+                  </option>
+                  <!-- Doctors loaded dynamically -->
+                </select>
+              </div>
+              <div class="row g-2 mb-3">
+                <div class="col-6">
+                  <label class="form-label text-muted small">Date</label>
+                  <input type="date" class="form-control" id="date" required />
+                </div>
+                <div class="col-6">
+                  <label class="form-label text-muted small">Time</label>
+                  <select class="form-select" id="time" required disabled>
+                    <option value="" selected disabled>
+                      Select Date First
+                    </option>
+                    <option value="09:00">09:00 AM</option>
+                    <option value="10:00">10:00 AM</option>
+                    <option value="11:00">11:00 AM</option>
+                    <option value="12:00">12:00 PM</option>
+                    <option value="13:00">01:00 PM</option>
+                    <option value="14:00">02:00 PM</option>
+                    <option value="15:00">03:00 PM</option>
+                    <option value="16:00">04:00 PM</option>
+                    <option value="17:00">05:00 PM</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row g-2 mb-3">
+                <div class="col-md-6">
+                  <label class="form-label text-muted small">Gender</label>
+                  <select class="form-select" id="patientGender" required>
+                    <option value="" selected disabled>Select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-muted small">Address</label>
+                  <textarea
+                    class="form-control"
+                    id="patientAddress"
+                    rows="1"
+                    required
+                  ></textarea>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label text-muted small"
+                  >Reason for Visit</label
+                >
+                <textarea class="form-control" id="reason" rows="3"></textarea>
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary rounded-pill">
+                  Confirm Booking
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit Appointment Modal -->
+    <div class="modal fade" id="editAppointmentModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg">
+          <div class="modal-header border-0 pb-0">
+            <h5 class="modal-title fw-bold">Edit Appointment</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4">
+            <form id="editAppointmentForm">
+              <input type="hidden" id="editApptId">
+              <div class="mb-3">
+                <label class="form-label text-muted small">Full Name</label>
+                <input type="text" class="form-control" id="editPatientName" required>
+              </div>
+              <div class="row g-2 mb-3">
+                <div class="col-md-6">
+                  <label class="form-label text-muted small">Gender</label>
+                  <select class="form-select" id="editPatientGender" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-muted small">Address</label>
+                  <textarea class="form-control" id="editPatientAddress" rows="1" required></textarea>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label text-muted small">Reason for Visit</label>
+                <textarea class="form-control" id="editReason" rows="3"></textarea>
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary rounded-pill">Save Changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg">
+          <div class="modal-header border-0 pb-0">
+            <h5 class="modal-title fw-bold">Login</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body p-4">
+            <form id="loginForm">
+              <div class="mb-3">
+                <label class="form-label text-muted small">Email Address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="loginEmail"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label text-muted small">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="loginPassword"
+                  required
+                />
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary rounded-pill">
+                  Login
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg">
+          <div class="modal-header border-0 pb-0">
+            <h5 class="modal-title fw-bold">Create Account</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body p-4">
+            <form id="signupForm">
+              <div class="mb-3">
+                <label class="form-label text-muted small">Full Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="signupName"
+                  required
+                />
+              </div>
+              <div class="row g-2 mb-3">
+                <div class="col-4">
+                  <label class="form-label text-muted small">Country</label>
+                  <select class="form-select" id="signupCountry" required>
+                    <option value="+1">USA (+1)</option>
+                    <option value="+44">UK (+44)</option>
+                    <option value="+91" selected>IND (+91)</option>
+                    <option value="+61">AUS (+61)</option>
+                    <option value="+81">JAP (+81)</option>
+                  </select>
+                </div>
+                <div class="col-8">
+                  <label class="form-label text-muted small"
+                    >Phone Number</label
+                  >
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="signupPhone"
+                    placeholder="1234567890"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label text-muted small">Email Address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="signupEmail"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label text-muted small">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="signupPassword"
+                  required
+                />
+              </div>
+              <!-- Role Selection Removed: Defaulting to Patient -->
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary rounded-pill">
+                  Create Account
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-dark rounded-pill"
+                  onclick="googleLogin()"
+                >
+                  <i class="bi bi-google me-2"></i>Sign up with Google
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div
+      class="modal fade"
+      id="confirmationModal"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg">
+          <div class="modal-header border-0 pb-0">
+            <h5 class="modal-title fw-bold" id="confirmationModalTitle">
+              Confirm Action
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body p-4">
+            <p id="confirmationModalBody" class="text-muted mb-0">
+              Are you sure you want to proceed?
+            </p>
+          </div>
+          <div class="modal-footer border-0 pt-0">
+            <button
+              type="button"
+              class="btn btn-outline-secondary rounded-pill"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger rounded-pill"
+              id="confirmationModalConfirmBtn"
+            >
+              Confirm
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-5 pb-4 mt-auto">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="fw-bold text-primary mb-3"><i class="bi bi-heart-pulse-fill me-2"></i>Health Sphere</h5>
+                    <p class="text-secondary small">Your trusted partner in digital healthcare. We are dedicated to making medical services accessible and efficient for everyone.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="fw-bold mb-3">Quick Links</h5>
+                    <ul class="list-unstyled small text-secondary">
+                        <li class="mb-2"><a href="index.html" class="text-decoration-none text-light">Home</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-decoration-none text-secondary">About Us</a></li>
+                        <li class="mb-2"><a href="#services" class="text-decoration-none text-secondary">Services</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-secondary">Contact</a></li>
+                    </ul>
+                </div>
+                 <div class="col-lg-3 col-md-6">
+                    <h5 class="fw-bold mb-3">Contact Us</h5>
+                    <ul class="list-unstyled small text-secondary">
+                        <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> 123 Health Street, Med City, NY 10012</li>
+                        <li class="mb-2"><i class="bi bi-envelope me-2"></i> support@healthsphere.com</li>
+                        <li class="mb-2"><i class="bi bi-telephone me-2"></i> +1 (555) 123-4567</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="fw-bold mb-3">Newsletter</h5>
+                    <p class="small text-secondary">Subscribe to get health tips and updates.</p>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control form-control-sm" placeholder="Your Email" aria-label="Your Email">
+                        <button class="btn btn-primary btn-sm" type="button">Join</button>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-secondary my-4">
+            <div class="text-center small text-secondary">
+                <p class="mb-0">&copy; 2024 Health Sphere. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Firebase SDKs (Compat) -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+
+    <script src="js/main.js?v=2"></script>
+  </body>
+</html>
