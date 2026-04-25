@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Health Sphere</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css?v=4" />
+</head>
+<body class="bg-light">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-shield-lock-fill me-2"></i>Health Sphere <span class="badge bg-white text-danger ms-2">Admin Panel</span></a>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="feedbacks.html">Feedbacks</a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <button onclick="logout()" class="btn btn-outline-light btn-sm">Sign Out</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5 animate-fade-in-up">
+        <h2 class="fw-bold text-dark mb-4">Admin Overview</h2>
+        
+        <ul class="nav nav-tabs mb-4" id="adminTabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active text-dark" id="all-users-tab" data-bs-toggle="pill" href="#all-users" role="tab"><i class="bi bi-people me-2"></i>All Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" id="doctors-tab" data-bs-toggle="pill" href="#doctors" role="tab"><i class="bi bi-person-badge me-2"></i>Doctors</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" id="patients-tab" data-bs-toggle="pill" href="#patients" role="tab"><i class="bi bi-person me-2"></i>Patients</a>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="adminTabsContent">
+            <!-- All Users Tab -->
+            <div class="tab-pane fade show active" id="all-users" role="tabpanel">
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="searchAllUsers" placeholder="Search All Users..." onkeyup="filterAdminTable('searchAllUsers', 'adminUsersTableBody')">
+                </div>
+                <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0 align-middle">
+                                <thead class="bg-light text-muted">
+                                    <tr>
+                                        <th class="p-4 border-0">Name</th>
+                                        <th class="p-4 border-0">Email</th>
+                                        <th class="p-4 border-0">Role</th>
+                                        <th class="p-4 border-0">Phone</th>
+                                        <th class="p-4 border-0">Created At</th>
+                                        <th class="p-4 border-0">Status</th>
+                                        <th class="p-4 border-0 text-end">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody_users">
+                                    <!-- JS will populate this -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Doctors Tab -->
+            <div class="tab-pane fade" id="doctors" role="tabpanel">
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="searchDoctors" placeholder="Search Doctors..." onkeyup="filterAdminTable('searchDoctors', 'tbody_doctors')">
+                </div>
+                <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0 align-middle">
+                                <thead class="bg-light text-muted">
+                                    <tr>
+                                        <th class="p-4 border-0">Name</th>
+                                        <th class="p-4 border-0">Email</th>
+                                        <th class="p-4 border-0">Role</th>
+                                        <th class="p-4 border-0">Phone</th>
+                                        <th class="p-4 border-0">Created At</th>
+                                        <th class="p-4 border-0">Status</th>
+                                        <th class="p-4 border-0 text-end">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody_doctors">
+                                    <!-- JS will populate this -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Patients Tab -->
+            <div class="tab-pane fade" id="patients" role="tabpanel">
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="searchPatients" placeholder="Search Patients..." onkeyup="filterAdminTable('searchPatients', 'tbody_patients')">
+                </div>
+                <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0 align-middle">
+                                <thead class="bg-light text-muted">
+                                    <tr>
+                                        <th class="p-4 border-0">Name</th>
+                                        <th class="p-4 border-0">Email</th>
+                                        <th class="p-4 border-0">Role</th>
+                                        <th class="p-4 border-0">Phone</th>
+                                        <th class="p-4 border-0">Created At</th>
+                                        <th class="p-4 border-0">Status</th>
+                                        <th class="p-4 border-0 text-end">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody_patients">
+                                    <!-- JS will populate this -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold" id="confirmationModalTitle">Confirm Action</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <p id="confirmationModalBody" class="text-muted mb-0">Are you sure you want to proceed?</p>
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                    <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger rounded-pill" id="confirmationModalConfirmBtn">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Firebase SDKs (Compat) -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="js/main.js?v=9"></script>
+</body>
+</html>

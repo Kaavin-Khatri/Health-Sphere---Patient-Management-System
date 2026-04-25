@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Blue Heart Shape -->
+  <path d="M50 88 C 19 68 4 48 4 32 C 4 15 18 6 31 6 C 40 6 46 12 50 18 C 54 12 60 6 69 6 C 82 6 96 15 96 32 C 96 48 81 68 50 88 Z" fill="#0d6efd"/>
+  
+  <!-- White Pulse Line -->
+  <path d="M 20 50 L 35 50 L 42 35 L 50 65 L 58 40 L 65 50 L 80 50" stroke="white" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
